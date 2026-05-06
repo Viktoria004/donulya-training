@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Слитый лид — Обучение | Донуля</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --red: #e63030;
+    --red-dim: rgba(230,48,48,0.12);
+    --red-glow: rgba(230,48,48,0.25);
+    --text: #f0ede8;
+    --muted: #7a7672;
+    --accent: #f5c842;
+    --green: #2ecc71;
+    --green-dim: rgba(46,204,113,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    position: relative;
+    padding: 72px 24px 56px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(230,48,48,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .label {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(42px, 8vw, 80px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .header h1 span { color: var(--red); }
+
+  .header-sub {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .section-title span { color: var(--red); }
+
+  /* DEFINITION BLOCK */
+  .def-block {
+    background: var(--surface);
+    border-left: 3px solid var(--red);
+    padding: 28px 32px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 20px;
+  }
+
+  .def-block p { color: var(--text); font-size: 15px; }
+  .def-block p + p { margin-top: 14px; }
+
+  .def-note {
+    background: var(--red-dim);
+    border: 1px solid rgba(230,48,48,0.3);
+    border-radius: 6px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #f5a0a0;
+  }
+
+  .def-note strong { color: var(--red); }
+
+  /* CONDITIONS */
+  .conditions {
+    display: grid;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .condition-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .condition-card:hover { border-color: var(--red); }
+
+  .condition-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .condition-text strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .condition-text span { color: var(--muted); font-size: 14px; }
+
+  /* CASES */
+  .case-group { margin-bottom: 28px; }
+
+  .case-group-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .case-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .case-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .case-list li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px 14px 44px;
+    position: relative;
+    font-size: 14px;
+    color: #d0ccc6;
+    transition: background 0.2s;
+  }
+
+  .case-list li:hover { background: var(--surface2); }
+
+  .case-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* PENALTY */
+  .penalty-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .penalty-icon {
+    font-size: 48px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .penalty-amount {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .penalty-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .penalty-desc {
+    font-size: 14px;
+    color: #c0bcb8;
+    line-height: 1.6;
+  }
+
+  /* QUIZ */
+  .quiz-section { padding: 60px 0 80px; }
+
+  .quiz-header { text-align: center; margin-bottom: 48px; }
+
+  .quiz-progress {
+    background: var(--surface2);
+    border-radius: 4px;
+    height: 4px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .quiz-progress-bar {
+    height: 100%;
+    background: var(--red);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .question-card.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-number {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .q-text {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .q-options { display: flex; flex-direction: column; gap: 10px; }
+
+  .q-option {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #c0bcb8;
+    transition: all 0.2s;
+    text-align: left;
+    position: relative;
+    padding-left: 48px;
+  }
+
+  .q-option::before {
+    content: attr(data-letter);
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .q-option:hover:not(.disabled) {
+    border-color: var(--red);
+    color: var(--text);
+    background: var(--red-dim);
+  }
+
+  .q-option:hover:not(.disabled)::before { color: var(--red); }
+
+  .q-option.correct {
+    border-color: var(--green);
+    background: var(--green-dim);
+    color: var(--text);
+  }
+
+  .q-option.correct::before { color: var(--green); }
+
+  .q-option.wrong {
+    border-color: var(--red);
+    background: var(--red-dim);
+    color: #f5a0a0;
+  }
+
+  .q-option.wrong::before { color: var(--red); }
+
+  .q-option.disabled { cursor: default; }
+
+  .q-explanation {
+    display: none;
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--surface2);
+    border-radius: 6px;
+    font-size: 14px;
+    color: #a0a0a0;
+    border-left: 3px solid var(--muted);
+  }
+
+  .q-explanation.show { display: block; }
+  .q-explanation.correct-exp { border-left-color: var(--green); color: #90e8b0; }
+  .q-explanation.wrong-exp { border-left-color: var(--red); }
+
+  .btn-next {
+    display: none;
+    margin-top: 24px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-next:hover { background: #c42020; }
+  .btn-next.show { display: inline-block; }
+
+  /* RESULTS */
+  .results-card {
+    display: none;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 52px 40px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .results-card.show { display: block; }
+
+  .results-score {
+    font-family: 'Oswald', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .results-score.high { color: var(--green); }
+  .results-score.mid { color: var(--accent); }
+  .results-score.low { color: var(--red); }
+
+  .results-label {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .results-msg {
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+  }
+
+  .btn-retry {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 28px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-retry:hover { border-color: var(--text); }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* EXAMPLES */
+  .example-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .example-card:hover { border-color: rgba(230,48,48,0.4); }
+
+  .example-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+
+  .example-tag {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(230,48,48,0.3);
+    padding: 3px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .example-manager {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .example-body { padding: 20px 24px; }
+
+  .crm-messages { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+
+  .crm-msg {
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    max-width: 92%;
+    line-height: 1.5;
+  }
+
+  .crm-msg.manager {
+    background: #1a2a3a;
+    border: 1px solid #234;
+    color: #a8c5e0;
+    align-self: flex-end;
+  }
+
+  .crm-msg.client {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: #c0bcb8;
+    align-self: flex-start;
+  }
+
+  .crm-msg .msg-meta {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .crm-event {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 4px;
+    border: 1px dashed var(--border);
+    align-self: center;
+    text-align: center;
+  }
+
+  .example-verdict {
+    background: var(--red-dim);
+    border: 1px solid rgba(230,48,48,0.25);
+    border-radius: 6px;
+    padding: 14px 18px;
+  }
+
+  .example-verdict-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .example-verdict p { font-size: 13px; color: #e8a0a0; line-height: 1.6; }
+
+  .example-what-to-do {
+    margin-top: 12px;
+    background: rgba(46,204,113,0.08);
+    border: 1px solid rgba(46,204,113,0.2);
+    border-radius: 6px;
+    padding: 14px 18px;
+  }
+
+  .example-what-to-do-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+
+  .example-what-to-do p { font-size: 13px; color: #90e8b0; line-height: 1.6; }
+
+  .fight-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .fight-banner-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .fight-banner-text span { color: var(--red); }
+
+  .fight-banner-sub {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* RULES */
+  .rules-grid { display: grid; gap: 20px; }
+
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 28px 28px 24px;
+    border-left: 4px solid var(--red);
+    transition: border-color 0.2s;
+  }
+
+  .rule-card:hover { border-color: var(--red); border-left-color: var(--red); }
+
+  .rule-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .rule-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--red);
+    background: var(--red-dim);
+    border: 1px solid rgba(230,48,48,0.25);
+    padding: 3px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .rule-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+
+  .rule-body { font-size: 14px; color: #c0bcb8; line-height: 1.7; padding-left: 0; }
+
+  .rule-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+
+  .rule-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .rule-step-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .rule-step-text { font-size: 13px; color: #d0ccc6; line-height: 1.55; }
+  .rule-step-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+  .objection-formula {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .of-step {
+    flex: 1;
+    padding: 16px 14px;
+    text-align: center;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+  }
+
+  .of-step:last-child { border-right: none; }
+
+  .of-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .of-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .of-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  .of-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    background: var(--surface2);
+    color: var(--red);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .penalty-block { flex-direction: column; gap: 16px; }
+    .q-text { font-size: 16px; }
+    .objection-formula { flex-direction: column; }
+    .of-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .of-step:last-child { border-bottom: none; }
+    .of-arrow { padding: 6px 0; justify-content: center; transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="label">Обучение · Отдел продаж</div>
+  <h1>Слитый<br><span>лид</span></h1>
+  <p class="header-sub">Что это такое, когда это происходит и как это влияет на твои результаты</p>
+</header>
+
+<!-- SECTION 1: DEFINITION -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">01 — Определение</div>
+    <h2 class="section-title">Что такое <span>слитый лид</span></h2>
+
+    <div class="def-block">
+      <p><strong>Слитый лид</strong> — потенциальный клиент, которого потерял менеджер из-за своих действий или бездействия. Сделка не состоялась, хотя изначально у неё были все шансы.</p>
+      <p>Лид считается «слитым менеджером», если у клиента была реальная перспектива конверсии, но из-за ошибок в работе — пропусков этапов, нарушений сроков, недостаточной активности — контакт был потерян.</p>
+    </div>
+
+    <div class="def-note">
+      <strong>Важно:</strong> слитый менеджером лид ≠ объективно потерянный лид. Если клиент ушёл по внешним причинам — это одно. Если из-за ошибок менеджера — это другое, и это разные вещи.
+    </div>
+  </section>
+
+  <!-- SECTION 2: CONDITIONS -->
+  <section class="section">
+    <div class="section-number">02 — Условия</div>
+    <h2 class="section-title">Когда лид считается <span>слитым тобой</span></h2>
+
+    <p style="color: var(--muted); margin-bottom: 24px;">Лид признаётся слитым менеджером только при одновременном выполнении двух условий:</p>
+
+    <div class="conditions">
+      <div class="condition-card">
+        <div class="condition-num">1</div>
+        <div class="condition-text">
+          <strong>Лид был перспективным</strong>
+          <span>Клиент соответствовал целевой аудитории: был интерес, был бюджет, был тот, кто принимает решение.</span>
+        </div>
+      </div>
+      <div class="condition-card">
+        <div class="condition-num">2</div>
+        <div class="condition-text">
+          <strong>Причина потери — твои действия или бездействие</strong>
+          <span>Не внешние обстоятельства, не решение клиента — а конкретные ошибки или недоработки с твоей стороны.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: RULES -->
+  <section class="section">
+    <div class="section-number">03 — Правила работы с лидом</div>
+    <h2 class="section-title">Три правила, которые <span>нельзя нарушать</span></h2>
+    <p style="color:var(--muted); margin-bottom: 28px;">Это не рекомендации. Это обязательные действия по каждому лиду.</p>
+
+    <div class="rules-grid">
+
+      <!-- RULE 1 -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">ПРАВИЛО 1</div>
+          <div class="rule-title">Позвонил — обязательно напиши</div>
+        </div>
+        <div class="rule-body">
+          <div class="rule-steps">
+            <div class="rule-step">
+              <div class="rule-step-num">→</div>
+              <div class="rule-step-text"><strong>После каждого звонка — сообщение в мессенджер.</strong> Дозвонился или нет — не важно. Написать обязательно. Это фиксирует попытку, поддерживает контакт и даёт клиенту удобный способ ответить.</div>
+            </div>
+            <div class="rule-step">
+              <div class="rule-step-num">→</div>
+              <div class="rule-step-text"><strong>Нет сообщения после звонка = слив.</strong> Даже если дозвонился — после разговора напиши итог: что договорились, когда следующий контакт.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RULE 2 -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">ПРАВИЛО 2</div>
+          <div class="rule-title">НДЗ — три звонка с разных номеров + сообщение</div>
+        </div>
+        <div class="rule-body">
+          <p style="margin-bottom:12px; color:#c0bcb8;">Клиент не берёт трубку? Это не повод закрывать лид. Алгоритм НДЗ (не дозвонились):</p>
+          <div class="rule-steps">
+            <div class="rule-step">
+              <div class="rule-step-num">1</div>
+              <div class="rule-step-text"><strong>Звонок 1 — с основного номера.</strong> Не взял — пишем сообщение по технологии переписки при НДЗ.</div>
+            </div>
+            <div class="rule-step">
+              <div class="rule-step-num">2</div>
+              <div class="rule-step-text"><strong>Звонок 2 — с другого номера</strong>, через короткий промежуток. Клиент мог не взнать номер. Снова пишем.</div>
+            </div>
+            <div class="rule-step">
+              <div class="rule-step-num">3</div>
+              <div class="rule-step-text"><strong>Звонок 3 — с третьего номера.</strong> После — финальное сообщение. Только после всех трёх попыток лид можно отложить (не закрыть).</div>
+            </div>
+            <div class="rule-step" style="border-color: rgba(230,48,48,0.3); background: var(--red-dim);">
+              <div class="rule-step-num" style="color:var(--red);">✕</div>
+              <div class="rule-step-text" style="color:#f5a0a0;"><strong>Один звонок + закрыл = слив.</strong> Даже если клиент «не контактный» — это видит ОКК и РОП.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RULE 3 -->
+      <div class="rule-card">
+        <div class="rule-header">
+          <div class="rule-num">ПРАВИЛО 3</div>
+          <div class="rule-title">Возражение = три шага, не один</div>
+        </div>
+        <div class="rule-body">
+          <p style="margin-bottom:14px; color:#c0bcb8;">Клиент сказал «нет», «не интересует», «подумаю» — это не финал. Это начало работы. Алгоритм:</p>
+          <div class="objection-formula">
+            <div class="of-step">
+              <div class="of-num">Шаг 1</div>
+              <div class="of-label">Присоединись</div>
+              <div class="of-desc">Покажи, что понимаешь клиента. «Я вас слышу», «Это важный вопрос». Ты на его стороне, не против него.</div>
+            </div>
+            <div class="of-arrow">›</div>
+            <div class="of-step">
+              <div class="of-num">Шаг 2</div>
+              <div class="of-label">Аргументируй</div>
+              <div class="of-desc">Конкретные факты, цифры, примеры. Покажи выгоду. Предложи альтернативу (БФЛ или РДГ). Без «ну вы должны понимать».</div>
+            </div>
+            <div class="of-arrow">›</div>
+            <div class="of-step">
+              <div class="of-num">Шаг 3</div>
+              <div class="of-label">Предложи купить</div>
+              <div class="of-desc">Закрывай на конкретный шаг: встречу, анализ, следующий звонок. Не жди — инициатива твоя.</div>
+            </div>
+          </div>
+          <div style="margin-top:12px; font-size:13px; color:var(--muted);">Минимум 2 полных цикла на одно возражение. Закрыть после первого «нет» — слив.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: CASES -->
+  <section class="section">
+    <div class="section-number">04 — Конкретные случаи</div>
+    <h2 class="section-title">Ситуации, в которых <span>ты сливаешь лид</span></h2>
+    <p style="color:var(--muted); margin-bottom: 28px;">Регламент + данные ОКК по 100+ проверенным сделкам.</p>
+
+    <div class="case-group">
+      <div class="case-group-title">Нарушение сроков</div>
+      <ul class="case-list">
+        <li>Первая реакция на лид — позже 5 минут (если клиент ждёт консультацию ко времени)</li>
+        <li>Следующее касание сделано с опозданием: обещал перезвонить через 2 дня — позвонил через неделю</li>
+        <li>Договорились созвониться — нет звонка в назначенную дату, сообщение клиента осталось без ответа</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Недостаточная активность</div>
+      <ul class="case-list">
+        <li>Попыток связи меньше норматива: по регламенту — 3 звонка, сделан 1</li>
+        <li>Использован не весь арсенал: не написал в мессенджере после недозвона</li>
+        <li>При первом отказе («не интересует») не сделано ни одной попытки отработать возражение и вернуть клиента</li>
+        <li>Клиент не отвечает — менеджер ставит «игнор» и закрывает лид, вместо того чтобы продолжать пробовать</li>
+        <li>Лид закрыт без единого общения с клиентом</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Возражения не отработаны</div>
+      <ul class="case-list">
+        <li>Возражение не отработано минимум 2 раза</li>
+        <li>Нет аргументации, нет сравнения с альтернативами, нет демонстрации выгоды</li>
+        <li>Лид закрыт после 1 отказа клиента продолжать разговор — без попытки удержать</li>
+        <li>Клиент говорит «подумаю» — менеджер не уточняет, что именно смущает, и не назначает дату следующего контакта</li>
+        <li>Клиент обращался в другую компанию, ему сказали «нет» — менеджер принимает это как финал и не отрабатывает</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Не задаёт квалификационные вопросы <span style="font-size:11px; color:var(--red); background:var(--red-dim); padding:2px 7px; border-radius:3px; letter-spacing:1px; margin-left:6px;">ТОП ОШИБКА</span></div>
+      <ul class="case-list">
+        <li>Не уточняет, есть ли у клиента или его близких проблемы с погашением кредитов / долгов</li>
+        <li>Клиент говорит «не оставлял заявку» — менеджер закрывает лид, не спросив о долговой ситуации</li>
+        <li>Клиент интересуется рефинансированием / кредитом — менеджер не уточняет, почему банки отказывают и есть ли проблемы с платежами</li>
+        <li>Не уточняет причину, по которой заявка стала неактуальной</li>
+        <li>Не выясняет, для кого берётся информация — клиент может консультироваться для близкого человека</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Не предлагает альтернативную процедуру</div>
+      <ul class="case-list">
+        <li>Клиент подходит под реструктуризацию долга (РДГ), но менеджер её не предлагает</li>
+        <li>Клиент отказывается от банкротства из-за судебных расходов — менеджер не рассказывает про другие варианты</li>
+        <li>Менеджер не доносит выгоды процедуры, которая подходит клиенту</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Нарушение бизнес-процессов</div>
+      <ul class="case-list">
+        <li>Лид не внесён в CRM или внесён некорректно: нет данных, пропущены этапы, нет сроков и примечаний</li>
+        <li>Нет комментария после касания — непонятно, о чём говорили и что договорились</li>
+        <li>Лид закрыт как «дубль», хотя активных сделок в работе нет</li>
+        <li>Лид закрыт как «неквал» без проверки — клиент оказывается целевым</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Коммуникационные ошибки</div>
+      <ul class="case-list">
+        <li>Грубость, невнимательность, пренебрежение к клиенту</li>
+        <li>Не выполнил обещание: не отправил информацию, не перезвонил в оговорённое время</li>
+        <li>Говорит фразы, которые отталкивают: «вы должны понимать», «мы не справочное бюро»</li>
+        <li>Прямо говорит клиенту, что не верит его словам — теряет доверие и контакт</li>
+        <li>Механически «прорабатывает базу», не проявляя реального интереса к ситуации клиента</li>
+      </ul>
+    </div>
+
+    <div class="case-group">
+      <div class="case-group-title">Отсутствие контроля</div>
+      <ul class="case-list">
+        <li>Клиент завис на этапе согласования — менеджер не уточняет статус, не напоминает</li>
+        <li>После отправки договора нет контрольного звонка или сообщения в мессенджер</li>
+        <li>Клиент говорит «да, но…» — менеджер не уточняет детали и закрывает контакт</li>
+        <li>Клиент согласился на встречу — на следующий день нет ни одного контрольного звонка</li>
+        <li>Клиент готов к сотрудничеству — менеджер не смог договориться о конкретном времени следующего шага</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 4: PENALTY -->
+  <section class="section">
+    <div class="section-number">05 — Мотивация</div>
+    <h2 class="section-title"><span>Штраф</span> за необоснованный слив</h2>
+
+    <div class="penalty-block">
+      <div class="penalty-icon">⚠️</div>
+      <div>
+        <div class="penalty-amount">2 000 ₽</div>
+        <div class="penalty-label">штраф / депремирование за каждый слитый лид</div>
+      </div>
+      <div class="penalty-desc">
+        Если РОП фиксирует слив по одному или нескольким из перечисленных выше пунктов — применяется штраф. Каждый слитый лид — это не только минус к твоей зарплате, но и реальный клиент, которому мы не помогли.
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- SECTION 5: REAL EXAMPLES -->
+<div class="container">
+  <section class="section">
+    <div class="section-number">06 — Разбор реальных случаев</div>
+    <h2 class="section-title">Как это выглядит <span>в AmoCRM</span></h2>
+    <p style="color:var(--muted); margin-bottom: 20px;">Реальные сделки из нашей системы, зафиксированные ОКК. Каждая признана слитым лидом.</p>
+    <div style="display:inline-flex; align-items:center; gap:10px; background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px 18px; margin-bottom:32px;">
+      <span style="font-family:'Oswald',sans-serif; font-size:28px; font-weight:700; color:var(--red); line-height:1;">100+</span>
+      <span style="font-size:13px; color:var(--muted);">сделок проверено ОКК<br>все — реальные менеджеры Донуля</span>
+    </div>
+
+    <!-- CASE 1 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 1</div>
+        <div class="example-manager">Ошибка: возражение не отработано</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-msg manager">
+            <div class="msg-meta">31.03.2026 09:22 · Менеджер</div>
+            Станислав, здравствуйте, у нас с вами стоят даты оплат на 25 число, удобны вам эти даты? Или мы с вами сегодня произведём оплату, а остальные даты оставим на 01 число?
+          </div>
+          <div class="crm-msg client">
+            <div class="msg-meta">31.03.2026 09:23 · Клиент</div>
+            Светлана, здравствуйте, забыл написать вам, пока не получается, давайте отменим всё?
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">31.03.2026 09:24 · Менеджер</div>
+            С устройства: Почему хотите отменить?
+          </div>
+          <div class="crm-event">... дальнейших попыток связи нет. Лид закрыт в отказ.</div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">01.04.2026 · Sensei: Слитый лид</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>Клиент написал «давайте отменим всё» — это первое возражение, не финальный отказ. Менеджер задал один вопрос и пропал. Нет звонка, нет повторной попытки, нет аргументации. Возражение нужно отрабатывать минимум 2 раза: выяснить причину, предложить альтернативу (перенести дату, разбить платёж), вернуть клиента в диалог.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>После вопроса «почему хотите отменить?» — ждать ответа, позвонить если нет реакции, предложить конкретное решение: перенести дату, уменьшить платёж, взять паузу. Биться за клиента, пока он не скажет «нет» три раза.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 2</div>
+        <div class="example-manager">Ошибка: нет звонков и примечаний, клиент брошен</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-event">Клиент обратился 16.04.2026</div>
+          <div class="crm-event">Нет звонков, нет примечаний — непонятно, пытались ли связаться</div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">22.04.2026 · Sensei (задача)</div>
+            ВП 4.0: Получи оплату от клиента! — статус: Думает.
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">29.04.2026 · Sensei (задача)</div>
+            ВП 4.0: Получи оплату от клиента! — статус: Думает.
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">04.05.2026 · Sensei (задача)</div>
+            ВП 4.0 — статус: Отказ.
+          </div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">Вчера · Sensei: Слитый лид</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>Клиент обратился 16 апреля. Дальше — тишина почти 3 недели. Ни одного зафиксированного звонка, ни примечаний. Задачи от Sensei висят, менеджер ставит «думает» и «думает» — и в итоге «отказ». Клиент просто был брошен. Это не отказ клиента, это игнорирование менеджером.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>После обращения — звонок в тот же день или на следующий. Все попытки фиксировать в CRM. Если клиент «думает» — уточнять: что именно, какие вопросы остались, когда перезвонить. Статус «думает» без следующего конкретного касания — это тоже слив.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 3</div>
+        <div class="example-manager">Ошибка: дозвонились — и сразу в отказ, без отработки</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-msg manager">
+            <div class="msg-meta">27.04.2026 13:55 · Менеджер → Клиент</div>
+            Исходящий звонок (не дозвонились)
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">27.04.2026 13:55 · Менеджер (6 сек)</div>
+            Разговор состоялся
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">27.04.2026 13:56 · Менеджер — сообщение</div>
+            Вера, не смогла дозвониться.... Постоянно занято. Хотела уточнить, получилось ли у Вас?
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">27.04.2026 14:30 · Менеджер (5 сек)</div>
+            Разговор состоялся
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">27.04.2026 16:34 · Менеджер (4 сек)</div>
+            Разговор состоялся
+          </div>
+          <div class="crm-event">30.04 — 03.05: контактов нет</div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">04.05.2026 15:33 · Менеджер (6 сек + 4 сек)</div>
+            Два звонка — разговор состоялся
+          </div>
+          <div class="crm-event">Комментарий: 27.04 клиент был на связи. После этого перезвонили 04.05 и сразу отправили в отказ.</div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">04.05.2026 15:45 · Sensei: Слитый лид</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>27 апреля клиент был на связи (разговор состоялся). После этого — 5 дней тишины (30.04–03.05). 4 мая позвонили — и сразу поставили отказ, без попытки выяснить причину и отработать. Клиента не «дожали». Звонки по 4–6 секунд говорят о том, что разговора по существу не было — нужно было добиться полноценного диалога.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>После разговора 27.04 — зафиксировать договорённость и следующую дату контакта. Не пропадать на 5 дней. Звонить регулярно, добиваться ответа, выяснять причину сомнений. Короткий звонок (4–6 сек) — не попытка, это недозвон. Ставить отказ без отработки возражений — слив.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 4</div>
+        <div class="example-manager">Ошибка: не задал квалификационные вопросы</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-msg client">
+            <div class="msg-meta">Клиент (входящий звонок)</div>
+            Я хотел бы узнать про рефинансирование кредитов.
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">Менеджер</div>
+            К сожалению, рефинансирование мы не делаем. Всего доброго.
+          </div>
+          <div class="crm-event">Лид закрыт. Никаких уточняющих вопросов задано не было.</div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">ОКК: Клиент интересуется кредитом. Менеджер не уточняет, есть ли у клиента или его близких проблемы с погашением кредитов. Слитый лид.</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>Клиент сказал «рефинансирование» — менеджер воспринял это как отказ от нашей услуги и повесил трубку. Но за словом «рефинансирование» часто стоит человек с долгами, которому банки уже отказывают. Именно он — наша целевая аудитория. Один квалификационный вопрос мог раскрыть это.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>«Понял вас. Скажите, а у вас или ваших близких есть сложности с погашением текущих кредитов?» — этот вопрос занимает 5 секунд и открывает разговор. Клиент, которому банки уже отказали в рефинансировании — идеальный кандидат на нашу процедуру.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 5 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 5</div>
+        <div class="example-manager">Ошибка: обещал перезвонить — не перезвонил</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-msg manager">
+            <div class="msg-meta">МПП · 27.03.2026</div>
+            МПП и клиент договорились созвониться 29.03.
+          </div>
+          <div class="crm-event">29.03 — нет звонков. Сообщение клиента оставлено без ответа.</div>
+          <div class="crm-event">30.03 — лид закрыт в отказ.</div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">ОКК: МПП и клиент договорились созвониться 29.03. Нет звонков за указанную дату, сообщение клиента оставлено без ответа. Слитый лид.</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>Клиент ждал звонка. Он выделил время, был готов к разговору. Менеджер не позвонил — клиент почувствовал себя проигнорированным. Доверие потеряно. После этого закрыть лид в отказ — это не решение клиента, это последствие безответственности менеджера.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>Ставить задачу в CRM с конкретной датой и временем. Если не смог позвонить вовремя — написать сразу, объяснить и перенести. Договорённость с клиентом — это обязательство, не пожелание.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 6 -->
+    <div class="example-card">
+      <div class="example-header">
+        <div class="example-tag">Случай 6</div>
+        <div class="example-manager">Ошибка: не подключил другого специалиста</div>
+      </div>
+      <div class="example-body">
+        <div class="crm-messages">
+          <div class="crm-msg client">
+            <div class="msg-meta">Клиент — целевой, долг 800 тыс.</div>
+            Не готов снижать официальный доход. Не понимаю, зачем это нужно.
+          </div>
+          <div class="crm-msg manager">
+            <div class="msg-meta">Менеджер</div>
+            Понял. Ну, это обязательное условие, ничего не могу сделать.
+          </div>
+          <div class="crm-event">Лид закрыт. Попытки объяснить требование не было. Юрист не подключён.</div>
+          <div class="crm-event" style="color:var(--red); border-color: rgba(230,48,48,0.3);">ОКК: Менеджер не рассказывает, какие требования нужны для реструктуризации. Не отрабатывает возражение «Не готов снизить официальный доход». Лид закрыт после одного отказа без подключения других специалистов для отработки возражений.</div>
+        </div>
+        <div class="example-verdict">
+          <div class="example-verdict-title">Что пошло не так</div>
+          <p>Клиент не понял требование — менеджер не объяснил. Менеджер упёрся в одно возражение и сдался. Не предложил рассмотреть другую процедуру (РДГ). Не передал клиента юристу, который мог бы объяснить нюансы и закрыть сделку.</p>
+        </div>
+        <div class="example-what-to-do">
+          <div class="example-what-to-do-title">Как надо было</div>
+          <p>Объяснить смысл требования простыми словами. Предложить рассмотреть реструктуризацию как альтернативу. Если сам не справляешься с возражением — подключи старшего менеджера или юриста. Не сдавайся там, где клиент ещё не принял окончательного решения.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIGHT BANNER -->
+    <div class="fight-banner">
+      <div class="fight-banner-text">Бейся за клиента <span>до последнего</span></div>
+      <p class="fight-banner-sub">Первый «нет» — это не отказ. Это начало работы. Задача менеджера — выяснить причину, предложить решение и не сдаваться, пока не исчерпаны все инструменты.</p>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- QUIZ -->
+<div class="container">
+  <section class="quiz-section">
+    <div class="quiz-header">
+      <div class="section-number" style="text-align:center">07 — Проверь себя</div>
+      <h2 class="section-title" style="text-align:center">Тест: <span>8 вопросов</span></h2>
+      <p style="color:var(--muted); text-align:center;">Ответь на все вопросы — узнаешь, насколько хорошо усвоил материал</p>
+    </div>
+
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card active" data-q="1">
+      <div class="q-number">Вопрос 1 из 8</div>
+      <div class="q-text">Что такое слитый лид?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Клиент, который отказался из-за высокой цены</button>
+        <button class="q-option" data-letter="Б" data-correct="true">Потенциальный клиент, потерянный из-за ошибок или бездействия менеджера</button>
+        <button class="q-option" data-letter="В" data-correct="false">Любой клиент, сделка с которым не закрылась</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Клиент, который попросил перезвонить и не ответил</button>
+      </div>
+      <div class="q-explanation" id="exp1">
+        Слитый лид — это конкретно тот, кого потерял менеджер по своей вине. Если клиент ушёл по внешним причинам — это не слив менеджера.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" data-q="2">
+      <div class="q-number">Вопрос 2 из 8</div>
+      <div class="q-text">Сколько условий должно выполняться одновременно, чтобы лид считался слитым менеджером?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Одно — клиент не купил</button>
+        <button class="q-option" data-letter="Б" data-correct="false">Три — перспективность, отказ и CRM</button>
+        <button class="q-option" data-letter="В" data-correct="true">Два — лид был перспективным И причина потери — действия менеджера</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Условий нет — достаточно решения РОПа</button>
+      </div>
+      <div class="q-explanation" id="exp2">
+        Оба условия обязательны. Если лид изначально был «мусорным» или ушёл по внешней причине — это не слив менеджера.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" data-q="3">
+      <div class="q-number">Вопрос 3 из 8</div>
+      <div class="q-text">Через сколько минут от получения лида должна быть первая реакция, чтобы не считаться слитым?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">30 минут</button>
+        <button class="q-option" data-letter="Б" data-correct="false">15 минут</button>
+        <button class="q-option" data-letter="В" data-correct="false">10 минут</button>
+        <button class="q-option" data-letter="Г" data-correct="true">5 минут</button>
+      </div>
+      <div class="q-explanation" id="exp3">
+        5 минут — максимум для первой реакции. Это касается лидов, которые ждут консультацию ко времени. После 5 минут шансы на дозвон и интерес клиента резко падают.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" data-q="4">
+      <div class="q-number">Вопрос 4 из 8</div>
+      <div class="q-text">Клиент не берёт трубку. Какой правильный алгоритм действий при НДЗ?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Позвонить 1 раз и написать сообщение</button>
+        <button class="q-option" data-letter="Б" data-correct="false">Подождать — сам перезвонит, если захочет</button>
+        <button class="q-option" data-letter="В" data-correct="true">3 звонка с разных номеров + сообщение после каждой попытки</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Позвонить 2 раза с одного номера, потом закрыть</button>
+      </div>
+      <div class="q-explanation" id="exp4">
+        НДЗ — три звонка с разных номеров + сообщение после каждого. Клиент мог не взять незнакомый номер. Только после всех трёх попыток лид можно отложить, но не закрыть.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" data-q="5">
+      <div class="q-number">Вопрос 5 из 8</div>
+      <div class="q-text">Каков правильный порядок отработки возражения клиента?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Аргументировать → дать подумать → закрыть</button>
+        <button class="q-option" data-letter="Б" data-correct="true">Присоединиться → аргументировать → предложить купить</button>
+        <button class="q-option" data-letter="В" data-correct="false">Уточнить возражение → закрыть лид → передать руководителю</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Объяснить → повторить предложение → подождать</button>
+      </div>
+      <div class="q-explanation" id="exp5">
+        Три шага: сначала присоединяешься (показываешь, что на стороне клиента), потом аргументируешь (факты, выгода, альтернатива), потом закрываешь на конкретный шаг — предлагаешь купить/записаться/встретиться. Минимум 2 полных цикла.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-card" data-q="6">
+      <div class="q-number">Вопрос 6 из 8</div>
+      <div class="q-text">После отправки договора менеджер ждёт ответа клиента и больше ничего не делает. Это нарушение?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Нет — мяч на стороне клиента</button>
+        <button class="q-option" data-letter="Б" data-correct="true">Да — нужен контрольный звонок или сообщение в мессенджер</button>
+        <button class="q-option" data-letter="В" data-correct="false">Только если прошло больше недели</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Нет — не нужно давить после договора</button>
+      </div>
+      <div class="q-explanation" id="exp6">
+        После отправки договора обязателен контрольный звонок или сообщение. Клиент может забыть, засомневаться или потерять документ. Молчание менеджера — это отсутствие контроля сделки.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-card" data-q="7">
+      <div class="q-number">Вопрос 7 из 8</div>
+      <div class="q-text">Какой штраф за необоснованный слив лида?</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">500 ₽</button>
+        <button class="q-option" data-letter="Б" data-correct="false">1 000 ₽</button>
+        <button class="q-option" data-letter="В" data-correct="true">2 000 ₽</button>
+        <button class="q-option" data-letter="Г" data-correct="false">5 000 ₽</button>
+      </div>
+      <div class="q-explanation" id="exp7">
+        2 000 рублей — штраф или депремирование за каждый необоснованный слив лида, зафиксированный РОПом.
+      </div>
+      <button class="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-card" data-q="8">
+      <div class="q-number">Вопрос 8 из 8</div>
+      <div class="q-text">Клиент пропал на этапе согласования. Менеджер думает: «Сам напишет, если захочет». Это:</div>
+      <div class="q-options">
+        <button class="q-option" data-letter="А" data-correct="false">Правильная позиция — уважение к клиенту</button>
+        <button class="q-option" data-letter="Б" data-correct="true">Нарушение — менеджер обязан уточнять статус и напоминать о себе</button>
+        <button class="q-option" data-letter="В" data-correct="false">Допустимо, если прошло менее 3 дней</button>
+        <button class="q-option" data-letter="Г" data-correct="false">Зависит от суммы сделки</button>
+      </div>
+      <div class="q-explanation" id="exp8">
+        Это нарушение. «Завис на согласовании» — прямой сигнал, что нужен контрольный контакт. Задача менеджера — вести клиента, а не ждать.
+      </div>
+      <button class="btn-next" onclick="showResults()">Смотреть результат →</button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-card" id="resultsCard">
+      <div class="results-score" id="resultsScore"></div>
+      <div class="results-label" id="resultsLabel"></div>
+      <div class="results-msg" id="resultsMsg"></div>
+      <button class="btn-retry" onclick="retryQuiz()">Пройти заново</button>
+    </div>
+
+  </section>
+</div>
+
+<script>
+  let currentQ = 1;
+  let score = 0;
+  const total = 8;
+
+  function updateProgress() {
+    const pct = ((currentQ - 1) / total) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  }
+
+  updateProgress();
+
+  document.querySelectorAll('.q-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const card = this.closest('.question-card');
+      const options = card.querySelectorAll('.q-option');
+      const isCorrect = this.dataset.correct === 'true';
+      const expId = 'exp' + card.dataset.q;
+      const exp = document.getElementById(expId);
+      const nextBtn = card.querySelector('.btn-next');
+
+      options.forEach(o => {
+        o.classList.add('disabled');
+        if (o.dataset.correct === 'true') o.classList.add('correct');
+      });
+
+      if (isCorrect) {
+        this.classList.add('correct');
+        score++;
+        exp.classList.add('show', 'correct-exp');
+      } else {
+        this.classList.add('wrong');
+        exp.classList.add('show', 'wrong-exp');
+      }
+
+      nextBtn.classList.add('show');
+    });
+  });
+
+  function nextQuestion() {
+    document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.remove('active');
+    currentQ++;
+    updateProgress();
+    document.querySelector(`.question-card[data-q="${currentQ}"]`).classList.add('active');
+  }
+
+  function showResults() {
+    document.querySelector(`.question-card[data-q="8"]`).classList.remove('active');
+    document.getElementById('progressBar').style.width = '100%';
+
+    const card = document.getElementById('resultsCard');
+    const scoreEl = document.getElementById('resultsScore');
+    const label = document.getElementById('resultsLabel');
+    const msg = document.getElementById('resultsMsg');
+
+    scoreEl.textContent = score + ' / ' + total;
+    label.textContent = 'правильных ответов';
+
+    if (score >= 7) {
+      scoreEl.className = 'results-score high';
+      msg.textContent = 'Отлично! Ты хорошо разобрался в теме. Теперь применяй это на практике — каждый лид важен.';
+    } else if (score >= 5) {
+      scoreEl.className = 'results-score mid';
+      msg.textContent = 'Неплохо, но есть пробелы. Перечитай разделы, где ошибся, и пройди тест снова.';
+    } else {
+      scoreEl.className = 'results-score low';
+      msg.textContent = 'Нужно разобраться глубже. Вернись к материалу выше — там всё есть. Каждый слитый лид — это минус 2 000 ₽ и реальный человек без помощи.';
+    }
+
+    card.classList.add('show');
+  }
+
+  function retryQuiz() {
+    score = 0;
+    currentQ = 1;
+
+    document.getElementById('resultsCard').classList.remove('show');
+
+    document.querySelectorAll('.question-card').forEach(card => {
+      card.classList.remove('active');
+      card.querySelectorAll('.q-option').forEach(o => {
+        o.classList.remove('correct', 'wrong', 'disabled');
+      });
+      const exp = card.querySelector('.q-explanation');
+      if (exp) exp.classList.remove('show', 'correct-exp', 'wrong-exp');
+      const btn = card.querySelector('.btn-next');
+      if (btn) btn.classList.remove('show');
+    });
+
+    document.querySelector('.question-card[data-q="1"]').classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: document.querySelector('.quiz-section').offsetTop - 40, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
