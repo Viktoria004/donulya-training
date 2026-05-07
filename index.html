@@ -654,6 +654,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="#schema">Схема</a>
+    <a href="#lifecycle">Цикл клиента</a>
     <a href="#stages">Этапы</a>
     <a href="#docs">Документы</a>
     <a href="#bot">Сообщения бота</a>
@@ -741,10 +742,152 @@
   </div>
 </section>
 
+<!-- ЦИКЛ КЛИЕНТА -->
+<section class="section" id="lifecycle">
+  <div class="container">
+    <div class="section-number">Часть 02 · НОВОЕ С МАЯ 2026</div>
+    <div class="section-title">Цикл клиента <span>у МОС</span></div>
+    <p style="margin-bottom:32px">Главные изменения: больше нет кнопок «принять / отказать», вводится понятие <strong style="color:var(--accent)">зачётной продажи</strong> и статусов <strong style="color:var(--accent)">активный / неактивный</strong> клиент.</p>
+
+    <!-- БЛОК 1: ПЕРЕДАЧА И ТРИ ДЕЙСТВИЯ -->
+    <div class="stage-card open" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">①</div>
+        <div class="stage-info">
+          <div class="stage-name">Передача клиента и закрепление за МОС</div>
+          <div class="stage-meta">Раньше: «принять / отказать» · Сейчас: 3 действия по итогу знакомства</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="role-row">
+          <div class="role-label">Главное правило</div>
+          <div class="role-content">
+            После того как тимлид сопровождения распределил клиента на МОС — <strong style="color:var(--accent)">МОС несёт ответственность</strong>. Кнопок «принять» и «отказать» больше нет. Других вариантов нет.
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="role-row">
+          <div class="role-label">Что выбирает МОС по итогу знакомства</div>
+          <div class="role-content">
+            <ul class="plain">
+              <li><span><strong style="color:var(--green)">✅ Готово</strong> — знакомство прошло успешно, клиент идёт на разбор документов. Закрепляется за МОС, идёт в план после подписания декларации.</span></li>
+              <li><span><strong style="color:var(--accent)">⚠️ С расхождениями</strong> — косяк продажника (что-то обещали не то). Клиент остаётся за МОС, в продажи уходит сигнал/штраф продажнику.</span></li>
+              <li><span><strong style="color:var(--red)">❌ Предрасторжение</strong> — клиент негативит / неквал / возражения отработать не удалось. Клиент уходит в воронку расторжений; деньги продажнику не платим, в план МОС не идёт.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="warn-box">
+          <div>
+            <strong>«Отказать» нельзя.</strong> Если клиент попал к МОС — МОС обязан отработать возражения. Не получилось → предрасторжение. Если МОС <strong>не отработал</strong> возражение и потерял клиента → <strong>штрафные санкции</strong> (по решению РОПа сопровождения).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- БЛОК 2: ЗАЧЁТНАЯ ПРОДАЖА -->
+    <div class="stage-card open" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">②</div>
+        <div class="stage-info">
+          <div class="stage-name">Зачётная продажа = подписанная декларация</div>
+          <div class="stage-meta">От зачётных продаж считается план МОС и % сбора в штуках</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="role-row">
+          <div class="role-label">Раньше</div>
+          <div class="role-content">Продажа = любой лид, оплативший трипваер / первый платёж / договор.</div>
+        </div>
+        <div class="divider"></div>
+        <div class="role-row">
+          <div class="role-label">Сейчас</div>
+          <div class="role-content">
+            <ul class="plain">
+              <li><span><strong>Продажа (валовая)</strong> — клиент оплатил трипваер / первый платёж. Метрика остаётся для конверсий продаж.</span></li>
+              <li><span><strong style="color:var(--accent)">Зачётная продажа</strong> — клиент <strong>подписал декларацию</strong> на разборе документов (День 1 после знакомства). Это новая основная метрика.</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="two-col">
+          <div>
+            <h3 style="color:var(--green)">✅ Декларация подписана</h3>
+            <div class="info-box">Продажа зачитывается продажнику. Клиент идёт в план МОС.</div>
+          </div>
+          <div>
+            <h3 style="color:#ff8080">❌ Декларация НЕ подписана</h3>
+            <div class="warn-box">Расторг. Деньги продажнику не платим. В план МОС не идёт.</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="quote-box">
+          <div class="quote-label">Логика</div>
+          На знакомстве клиент только узнаёт о процедуре. На разбор документов он приходит, переспав с решением — и подписывает декларацию осознанно. Только тогда продажа считается состоявшейся.
+        </div>
+      </div>
+    </div>
+
+    <!-- БЛОК 3: АКТИВНЫЙ / НЕАКТИВНЫЙ -->
+    <div class="stage-card open" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">③</div>
+        <div class="stage-info">
+          <div class="stage-name">Активный и неактивный клиент</div>
+          <div class="stage-meta">3 рабочих дня недозвона и молчания → клиент уходит в воронку заморозки</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="role-row">
+          <div class="role-label">Активный</div>
+          <div class="role-content">Клиент на связи: отвечает в чате или на звонке.</div>
+        </div>
+        <div class="divider"></div>
+        <div class="role-row">
+          <div class="role-label">Неактивный</div>
+          <div class="role-content"><strong>3 рабочих дня подряд</strong> — недозвон + молчание в переписке (ни звонка, ни сообщения).</div>
+        </div>
+        <div class="divider"></div>
+        <h3>Что происходит в эти 3 дня</h3>
+        <ul class="plain">
+          <li><span><strong>День 1:</strong> МОС звонит — недозвон. <strong style="color:var(--accent)">Тимлид сопровождения тоже звонит этому клиенту.</strong></span></li>
+          <li><span><strong>День 2:</strong> МОС звонит — недозвон. <strong style="color:var(--accent)">Тимлид тоже звонит.</strong></span></li>
+          <li><span><strong>День 3:</strong> МОС звонит — недозвон. Тимлид тоже звонит. Клиент <strong>становится неактивным</strong>.</span></li>
+        </ul>
+        <div class="info-box">
+          Тимлид звонит <strong>параллельно</strong> с МОС все 3 дня — у клиента 2 точки касания вместо одной, шанс достучаться выше.
+        </div>
+        <div class="divider"></div>
+        <h3>Когда клиент стал неактивным</h3>
+        <ul class="plain">
+          <li><span>Подключается <strong>тимлид по тарифам</strong> — ещё одна попытка через скрипт по тарифам/возражениям.</span></li>
+          <li><span>Если в полном загасе → статус <strong>«закрыто, не реализовано»</strong> → клиент уходит в <strong style="color:var(--blue)">🧊 воронку заморозки</strong>.</span></li>
+          <li><span><strong>Из плана МОС такой клиент уходит.</strong></span></li>
+        </ul>
+        <div class="divider"></div>
+        <h3>🧊 Воронка заморозки</h3>
+        <ul class="plain">
+          <li><span>Отдельная воронка для «потеряшек».</span></li>
+          <li><span>С загасом работает <strong>отдельный сотрудник</strong> (не МОС): дозванивается, вытаскивает, возобновляет работу.</span></li>
+          <li><span>Если разморозили — <strong>не факт</strong>, что клиент вернётся к тому же МОС (зависит от загрузки и решения тимлида).</span></li>
+        </ul>
+        <div class="quote-box" style="margin-top:16px">
+          <div class="quote-label">Логика</div>
+          МОС сосредоточен на тех, кто на связи и платит. «Потеряшек» обрабатывает специализированный сотрудник.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ЭТАПЫ -->
 <section class="section" id="stages">
   <div class="container">
-    <div class="section-number">Часть 02</div>
+    <div class="section-number">Часть 03</div>
     <div class="section-title">Этапы <span>подробно</span></div>
 
     <!-- ЭТАП 1 -->
@@ -1054,7 +1197,7 @@
 <!-- ДОКУМЕНТЫ -->
 <section class="section" id="docs">
   <div class="container">
-    <div class="section-number">Часть 03</div>
+    <div class="section-number">Часть 04</div>
     <div class="section-title">Документы на <span>подпись</span></div>
 
     <div class="doc-card">
@@ -1124,14 +1267,15 @@
 <!-- СООБЩЕНИЯ БОТА -->
 <section class="section" id="bot">
   <div class="container">
-    <div class="section-number">Часть 04</div>
+    <div class="section-number">Часть 05</div>
     <div class="section-title">Сообщения <span>бота</span></div>
 
+    <!-- ЭТАП 3 -->
     <div class="stage-card" onclick="toggleCard(this)">
       <div class="stage-header">
         <div class="stage-num">①</div>
         <div class="stage-info">
-          <div class="stage-name">После знакомства</div>
+          <div class="stage-name">Этап 3 — После знакомства</div>
           <div class="stage-meta">Триггер: МОС завершил звонок-знакомство</div>
         </div>
         <div class="stage-arrow">▾</div>
@@ -1143,15 +1287,16 @@
           Завтра разберём документы и начнём их собирать.<br><br>
           🎧 А пока изучите список документов и послушайте наш аудио-подкаст о том, что ждёт Вас в ближайшие месяцы.
         </div>
-        <p>+ Бот автоматически: список документов PDF, аудио-гид, инструкция по доверенности.</p>
+        <p>+ Бот автоматически отправляет вложения: 📄 Список документов (PDF) · 🎧 Гид по процедуре (аудио) · 📄 Инструкция по доверенности</p>
       </div>
     </div>
 
+    <!-- ЭТАП 4 -->
     <div class="stage-card" onclick="toggleCard(this)">
       <div class="stage-header">
         <div class="stage-num">②</div>
         <div class="stage-info">
-          <div class="stage-name">После разбора документов</div>
+          <div class="stage-name">Этап 4 — После разбора документов</div>
           <div class="stage-meta">Триггер: МОС закрыл задачу «Разбор документов»</div>
         </div>
         <div class="stage-arrow">▾</div>
@@ -1161,60 +1306,121 @@
           <div class="bot-label">Бот автоматически</div>
           МЫ НАЧИНАЕМ СБОР ДОКУМЕНТОВ! 🚀<br><br>
           Что я жду от Вас сегодня:<br><br>
-          🔑 Госуслуги: Логин и Пароль. (Это нужно, чтобы юрист собрал справки за Вас).<br><br>
+          🔑 Госуслуги: Логин и Пароль.<br>
+          (Это нужно, чтобы юрист собрал справки за Вас).<br><br>
           🤳 Фото личных документов:<br>
+          <span style="color:var(--accent)">[МОС пишет вручную:]</span><br>
           • Паспорт (все страницы, от корки до корки, даже пустые);<br>
-          • СНИЛС; • ИНН.<br><br>
+          • СНИЛС;<br>
+          • ИНН.<br><br>
           📋 Документы по имуществу (если есть):<br>
           • Договоры купли-продажи или дарения (за последние 3 года);<br>
           • Документы на транспорт (ПТС/СТС).<br><br>
           📝 ВАШЕ ДОМАШНЕЕ ЗАДАНИЕ (на 3 дня):<br>
-          Напишите список долгов: [банк], [продукт], [просрочка].<br><br>
-          📞 ЧТО ДАЛЬШЕ: В ближайшее время с вами свяжется помощник юриста и закажет справки с Госуслуг. Важно! Не пропустите звонок!
+          Напишите мне сюда список ваших долгов в формате:<br>
+          [Наименование банка], [Что за продукт], [Сколько времени просрочка].<br>
+          Пример: Сбербанк, кредитная карта, просрочка 10 дней;<br>
+          Альфа-банк, ипотека, просрочек нет; Мигкредит, микрозайм, 3 дня.<br><br>
+          📞 ЧТО ДАЛЬШЕ:<br>
+          В ближайшее время с вами свяжется помощник юриста и закажет справки с Госуслуг. Важно! Не пропустите звонок!
         </div>
+        <p>+ Бот автоматически: 📄 Инструкция по отправке документов в чат</p>
       </div>
     </div>
 
+    <!-- ЭТАП 4.1 -->
     <div class="stage-card" onclick="toggleCard(this)">
       <div class="stage-header">
-        <div class="stage-num">③</div>
+        <div class="stage-num">②✍</div>
         <div class="stage-info">
-          <div class="stage-name">Анализ завершён — два варианта</div>
-          <div class="stage-meta">Триггер: досудебный юрист закрыл задачу</div>
+          <div class="stage-name">Этап 4.1 — Подписание согласия на процедуру</div>
+          <div class="stage-meta">Триггер: МОС отправляет ссылку Okidoki прямо во время звонка · Генерируется автоматически</div>
         </div>
         <div class="stage-arrow">▾</div>
       </div>
       <div class="stage-body">
-        <div class="two-col">
-          <div>
-            <h3>Если чисто</h3>
-            <div class="bot-msg">
-              <div class="bot-label">Бот автоматически</div>
-              [Имя] 👋<br><br>
-              Юристы завершили полный анализ Ваших документов — всё в порядке.<br><br>
-              По результатам проверки нет обстоятельств, которые могли бы осложнить процедуру.<br><br>
-              Подробно обсудим на ближайшем плановом звонке [дата]. 🤝
-            </div>
-          </div>
-          <div>
-            <h3>Если есть обстоятельства</h3>
-            <div class="bot-msg">
-              <div class="bot-label">Бот автоматически</div>
-              [Имя] 👋<br><br>
-              Юристы завершили анализ Ваших документов.<br><br>
-              В ходе проверки выявлены обстоятельства, которые важно обсудить до начала процедуры.<br><br>
-              До связи [дата]. 🤝
-            </div>
-          </div>
+        <div class="bot-msg">
+          <div class="bot-label">Бот автоматически</div>
+          Мы подготовили для вас согласие на процедуру.<br>
+          Чтобы продолжить работу и приступить к сбору документов, нужно подписать его по ссылке 👉 [Ссылка на Okidoki]
+        </div>
+        <div class="warn-box">
+          Ссылку отправляет бот автоматически. МОС сопровождает клиента во время подписания, не бросает трубку.
         </div>
       </div>
     </div>
 
+    <!-- ЭТАП 6А -->
+    <div class="stage-card" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">③А</div>
+        <div class="stage-info">
+          <div class="stage-name">Этап 6А — Анализ завершён: всё чисто</div>
+          <div class="stage-meta">Триггер: досудебный юрист закрыл задачу — обстоятельств не выявлено</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="bot-msg">
+          <div class="bot-label">Бот автоматически</div>
+          [Имя] 👋<br><br>
+          Юристы завершили полный анализ Ваших документов — всё в порядке.<br><br>
+          По результатам проверки нет обстоятельств, которые могли бы осложнить процедуру. Всё идёт в штатном режиме.<br><br>
+          Подробно обсудим на нашем ближайшем плановом звонке [дата]. 🤝
+        </div>
+      </div>
+    </div>
+
+    <!-- ЭТАП 6Б -->
+    <div class="stage-card" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">③Б</div>
+        <div class="stage-info">
+          <div class="stage-name">Этап 6Б — Анализ завершён: выявлены обстоятельства</div>
+          <div class="stage-meta">Триггер: досудебный юрист закрыл задачу — выявлены обстоятельства</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="bot-msg">
+          <div class="bot-label">Бот автоматически</div>
+          [Имя] 👋<br><br>
+          Юристы завершили анализ Ваших документов.<br><br>
+          Результат обсудим с вами на ближайшей плановой консультации.<br><br>
+          До связи [дата]. 🤝
+        </div>
+      </div>
+    </div>
+
+    <!-- ЭТАП 6Б.1 -->
+    <div class="stage-card" onclick="toggleCard(this)">
+      <div class="stage-header">
+        <div class="stage-num">③Б✍</div>
+        <div class="stage-info">
+          <div class="stage-name">Этап 6Б.1 — Подписание уведомления об особенностях дела</div>
+          <div class="stage-meta">Триггер: автоматически после 2-го планового касания · Только если в 6Б выявлены обстоятельства</div>
+        </div>
+        <div class="stage-arrow">▾</div>
+      </div>
+      <div class="stage-body">
+        <div class="bot-msg">
+          <div class="bot-label">Бот автоматически</div>
+          По Вашему делу подготовлен документ с описанием особенностей Вашей ситуации.<br><br>
+          Пожалуйста, перейдите по ссылке и подпишите его. 👉<br><br>
+          [ссылка на Okidoki]
+        </div>
+        <div class="info-box">
+          Ссылка приходит клиенту автоматически после 2-го касания. Уведомление заполняет досудебный юрист в AmoCRM заранее.
+        </div>
+      </div>
+    </div>
+
+    <!-- ЭТАП 7 -->
     <div class="stage-card" onclick="toggleCard(this)">
       <div class="stage-header">
         <div class="stage-num">④</div>
         <div class="stage-info">
-          <div class="stage-name">После 1-го планового касания</div>
+          <div class="stage-name">Этап 7 — После 1-го планового касания</div>
           <div class="stage-meta">Триггер: юрист закрыл задачу «1-е касание»</div>
         </div>
         <div class="stage-arrow">▾</div>
@@ -1227,22 +1433,26 @@
           • готовим отзывы персональных данных и запросы кредиторам.<br>
           • ожидаем готовность заказанных справок.<br><br>
           2. Что ожидаем от вас:<br>
-          • [список документов со статусом «запрошено»]<br>
-          • При наличии супруга(-и): паспорт, СНИЛС, ЕГРН супруга(-и).<br>
+          <span style="color:var(--accent)">[МОС выбирает сам из списка:]</span><br>
+          • [список документов, у которых стоит статус «запрошено»]<br>
+          • При наличии супруга(-и): фото паспорта (все страницы), СНИЛС и ЕГРН супруга(-и).<br>
           • Свидетельство о заключении/расторжении брака.<br>
-          • Свидетельство о рождении детей (иждивенцев).<br>
-          • Сфотографируйте договоры или скачайте в приложении кредитора.<br><br>
-          3. Начинайте копить на гос. платежи уже сегодня.<br><br>
-          Все документы прислать в течение 3 дней 🙏
+          • Свидетельство о рождении детей (иждивенцев).<br><br>
+          3. Сфотографируйте ваши договоры или скачайте в приложении кредитора.<br>
+          Если их нет — просто напишите названия банков в этот чат.<br>
+          Пример: Сбербанк, Альфа-банк — договоров нет.<br><br>
+          4. Начинайте копить на гос. платежи уже сегодня, чтобы мы с вами уложились в срок.<br><br>
+          Все документы нужно прислать в этот чат в течение 3 дней 🙏
         </div>
       </div>
     </div>
 
+    <!-- ЭТАП 8 -->
     <div class="stage-card" onclick="toggleCard(this)">
       <div class="stage-header">
         <div class="stage-num">⑤</div>
         <div class="stage-info">
-          <div class="stage-name">После 2-го планового касания</div>
+          <div class="stage-name">Этап 8 — После 2-го планового касания</div>
           <div class="stage-meta">Триггер: юрист закрыл задачу «2-е касание»</div>
         </div>
         <div class="stage-arrow">▾</div>
@@ -1252,18 +1462,19 @@
           <div class="bot-label">Бот автоматически</div>
           📋 План на ближайшую неделю:<br><br>
           1. Что делаем мы:<br>
-          • готовим письменные пояснения для суда на основе ваших ответов.<br>
+          • готовим письменные пояснения для суда.<br>
           • ожидаем поступления оставшихся справок из госорганов.<br><br>
           2. Что ожидаем от вас:<br>
-          • [список документов со статусом «запрошено»]<br>
-          • справку 2-НДФЛ за текущий год от работодателя.<br>
-          • выписку по основной дебетовой карте за 3 года.<br><br>
+          • [список документов, у которых стоит статус «запрошено»]<br>
+          • справку 2-НДФЛ за текущий год от вашего работодателя.<br>
+          • выписку по вашей основной дебетовой карте за последние 3 года.<br><br>
           3. Накопления на депозит:<br>
           • Накоплено: [Сумма] ₽.<br>
           • Осталось накопить: [Остаток] ₽.<br><br>
-          4. Ниже — инструкция по отправке писем кредиторам. Чеки направить в чат ❗
+          4. Ниже направляем инструкцию по отправке писем кредиторам.<br>
+          Чеки нужно в обязательном порядке направить в этот чат ❗
         </div>
-        <p>+ Бот автоматически: инструкция ОПД, отзывы персональных данных.</p>
+        <p>+ Бот автоматически: 📄 Инструкция: как отправить ОПД · 📄 Отзыв персональных данных с запросом договора</p>
       </div>
     </div>
 
@@ -1275,14 +1486,14 @@
   <div class="container">
     <div class="section-number">Часть 06</div>
     <div class="section-title">Проверь <span>себя</span></div>
-    <p>10 вопросов по материалу. Ответьте на каждый — в конце увидите результат.</p>
+    <p>13 вопросов по материалу. Ответьте на каждый — в конце увидите результат.</p>
 
     <div class="quiz-wrap" style="margin-top:32px">
       <div class="quiz-progress" id="quizProgress"></div>
 
       <!-- Q1 -->
       <div class="quiz-q active" data-correct="1">
-        <div class="quiz-counter">Вопрос 1 из 10</div>
+        <div class="quiz-counter">Вопрос 1 из 13</div>
         <div class="quiz-question">На каком этапе клиент подписывает Согласие на процедуру?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> На знакомстве (День 0)</div>
@@ -1296,7 +1507,7 @@
 
       <!-- Q2 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 2 из 10</div>
+        <div class="quiz-counter">Вопрос 2 из 13</div>
         <div class="quiz-question">Что происходит сразу после того, как клиент подписал Согласие?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> МОС назначает 1-е касание, потом помощник юриста собирает документы</div>
@@ -1310,7 +1521,7 @@
 
       <!-- Q3 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 3 из 10</div>
+        <div class="quiz-counter">Вопрос 3 из 13</div>
         <div class="quiz-question">Клиент говорит: «У меня высокие риски по сделкам за последние 3 года». Как правильно ответить?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> «Да, это серьёзные риски, давайте обсудим»</div>
@@ -1324,7 +1535,7 @@
 
       <!-- Q4 -->
       <div class="quiz-q" data-correct="2">
-        <div class="quiz-counter">Вопрос 4 из 10</div>
+        <div class="quiz-counter">Вопрос 4 из 13</div>
         <div class="quiz-question">Какой срок у помощника юриста на сбор документов с Госуслуг?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> 3 рабочих дня</div>
@@ -1338,7 +1549,7 @@
 
       <!-- Q5 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 5 из 10</div>
+        <div class="quiz-counter">Вопрос 5 из 13</div>
         <div class="quiz-question">Что включают дополнительные расходы клиента, которые не входят в стоимость услуг?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> 25 000 + 15 000 + 10 000 + 300 ₽ госпошлина</div>
@@ -1352,7 +1563,7 @@
 
       <!-- Q6 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 6 из 10</div>
+        <div class="quiz-counter">Вопрос 6 из 13</div>
         <div class="quiz-question">Досудебный юрист закрыл задачу: обстоятельств не выявлено. Что происходит дальше?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> Юрист сопровождения звонит клиенту и рассказывает о результатах</div>
@@ -1366,7 +1577,7 @@
 
       <!-- Q7 -->
       <div class="quiz-q" data-correct="3">
-        <div class="quiz-counter">Вопрос 7 из 10</div>
+        <div class="quiz-counter">Вопрос 7 из 13</div>
         <div class="quiz-question">На каком касании проводится инструктаж по сохранению имущества?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> На знакомстве</div>
@@ -1380,7 +1591,7 @@
 
       <!-- Q8 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 8 из 10</div>
+        <div class="quiz-counter">Вопрос 8 из 13</div>
         <div class="quiz-question">Клиент на разборе документов говорит: «Посмотрю согласие позже». Что делает МОС?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> Соглашается и завершает звонок</div>
@@ -1394,7 +1605,7 @@
 
       <!-- Q9 -->
       <div class="quiz-q" data-correct="1">
-        <div class="quiz-counter">Вопрос 9 из 10</div>
+        <div class="quiz-counter">Вопрос 9 из 13</div>
         <div class="quiz-question">Клиент в процедуре РДГ. Сколько максимум он может получать на руки в период процедуры?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> Прожиточный минимум</div>
@@ -1408,7 +1619,7 @@
 
       <!-- Q10 -->
       <div class="quiz-q" data-correct="2">
-        <div class="quiz-counter">Вопрос 10 из 10</div>
+        <div class="quiz-counter">Вопрос 10 из 13</div>
         <div class="quiz-question">Как правильно написать название бренда в сообщении клиенту?</div>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> «В Донули вас ждут»</div>
@@ -1417,13 +1628,55 @@
           <div class="quiz-option" onclick="selectOpt(this,3)"><span class="opt-letter">Г</span> «Донулей занимается ваш юрист»</div>
         </div>
         <div class="quiz-feedback" id="fb9"></div>
-        <button class="quiz-btn" onclick="showResult()" id="nextBtn9" disabled>Показать результат</button>
+        <button class="quiz-btn" onclick="nextQ()" id="nextBtn9" disabled>Далее →</button>
+      </div>
+
+      <!-- Q11 -->
+      <div class="quiz-q" data-correct="1">
+        <div class="quiz-counter">Вопрос 11 из 13</div>
+        <div class="quiz-question">Тимлид распределил клиента на МОС. На знакомстве клиент негативит и не хочет работать. Что делает МОС?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> Нажимает «отказать» — клиент возвращается в продажи</div>
+          <div class="quiz-option" onclick="selectOpt(this,1)"><span class="opt-letter">Б</span> Отрабатывает возражения. Если не получилось — отправляет в «Предрасторжение»</div>
+          <div class="quiz-option" onclick="selectOpt(this,2)"><span class="opt-letter">В</span> Передаёт клиента другому МОС</div>
+          <div class="quiz-option" onclick="selectOpt(this,3)"><span class="opt-letter">Г</span> Просто не берёт клиента в работу</div>
+        </div>
+        <div class="quiz-feedback" id="fb10"></div>
+        <button class="quiz-btn" onclick="nextQ()" id="nextBtn10" disabled>Далее →</button>
+      </div>
+
+      <!-- Q12 -->
+      <div class="quiz-q" data-correct="2">
+        <div class="quiz-counter">Вопрос 12 из 13</div>
+        <div class="quiz-question">Что считается зачётной продажей с мая 2026?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> Клиент оплатил трипваер 99 ₽</div>
+          <div class="quiz-option" onclick="selectOpt(this,1)"><span class="opt-letter">Б</span> Клиент оплатил первый платёж по договору</div>
+          <div class="quiz-option" onclick="selectOpt(this,2)"><span class="opt-letter">В</span> Клиент подписал декларацию на разборе документов</div>
+          <div class="quiz-option" onclick="selectOpt(this,3)"><span class="opt-letter">Г</span> Клиент пришёл на знакомство</div>
+        </div>
+        <div class="quiz-feedback" id="fb11"></div>
+        <button class="quiz-btn" onclick="nextQ()" id="nextBtn11" disabled>Далее →</button>
+      </div>
+
+      <!-- Q13 -->
+      <div class="quiz-q" data-correct="2">
+        <div class="quiz-counter">Вопрос 13 из 13</div>
+        <div class="quiz-question">Клиент 3 рабочих дня подряд не отвечает на звонки и в чате. Что происходит?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOpt(this,0)"><span class="opt-letter">А</span> МОС продолжает вести его как обычно ещё месяц</div>
+          <div class="quiz-option" onclick="selectOpt(this,1)"><span class="opt-letter">Б</span> Клиент сразу удаляется из системы</div>
+          <div class="quiz-option" onclick="selectOpt(this,2)"><span class="opt-letter">В</span> Клиент → неактивный → подключаются тимлиды; если не достучались — воронка заморозки, из плана МОС выпадает</div>
+          <div class="quiz-option" onclick="selectOpt(this,3)"><span class="opt-letter">Г</span> Клиент остаётся в плане МОС, но без задач</div>
+        </div>
+        <div class="quiz-feedback" id="fb12"></div>
+        <button class="quiz-btn" onclick="showResult()" id="nextBtn12" disabled>Показать результат</button>
       </div>
 
       <!-- RESULT -->
       <div class="quiz-result" id="quizResult">
         <div class="result-score" id="resultScore"></div>
-        <div class="result-label">из 10 правильных ответов</div>
+        <div class="result-label">из 13 правильных ответов</div>
         <div class="result-msg" id="resultMsg"></div>
         <button class="quiz-btn" onclick="restartQuiz()">↺ Пройти заново</button>
       </div>
@@ -1433,7 +1686,7 @@
 </section>
 
 <div class="footer">
-  Донуля · Бизнес-процесс сопровождения · Версия 1.0 · Май 2026
+  Донуля · Бизнес-процесс сопровождения · Версия 1.1 · Май 2026
 </div>
 
 <script>
@@ -1443,7 +1696,7 @@
   }
 
   // QUIZ
-  const TOTAL = 10;
+  const TOTAL = 13;
   const FEEDBACK = [
     { ok: 'Верно. Согласие подписывается строго на разборе документов (День 1), прямо во время звонка через Okidoki.', fail: 'Неверно. Согласие подписывается на разборе документов (День 1), прямо во время звонка — не раньше и не позже.' },
     { ok: 'Верно. Обе задачи уходят параллельно — не последовательно. Это экономит время и ускоряет запуск анализа.', fail: 'Неверно. Задачи уходят параллельно одновременно: помощнику юриста И МОС на 1-е касание.' },
@@ -1455,6 +1708,9 @@
     { ok: 'Верно. Без подписи согласия нельзя запустить анализ дела. Просим подписать сегодня — мягко, но настойчиво.', fail: 'Неверно. Нужно настойчиво попросить подписать сегодня, объяснив что без этого анализ не запустится.' },
     { ok: 'Верно. При РДГ на руки — не более 50 000 ₽/мес. При БФЛ — прожиточный минимум. Разные продукты — разные условия.', fail: 'Неверно. При реструктуризации (РДГ) лимит — 50 000 ₽/мес. Прожиточный минимум — это для БФЛ.' },
     { ok: 'Верно. «Донуля» не склоняется никогда. Используем «компания Донуля» или просто «Донуля».', fail: 'Неверно. «Донуля» не склоняется. Правильно: «компания Донуля». Запомните это правило навсегда.' },
+    { ok: 'Верно. Кнопки «отказать» нет. МОС обязан отработать возражение, иначе — «Предрасторжение». Неотработанное возражение = штраф МОС.', fail: 'Неверно. Кнопок «принять/отказать» больше нет. МОС отрабатывает возражения; не получилось — «Предрасторжение». Просто не взять клиента нельзя.' },
+    { ok: 'Верно. Зачётная продажа = подписанная декларация. От неё считается план МОС и % сбора в штуках.', fail: 'Неверно. Зачётная продажа — это подписанная декларация на разборе документов, а не оплата трипваера или первого платежа.' },
+    { ok: 'Верно. На 3-й день недозвона клиент → неактивный → воронка заморозки → отдельный сотрудник по разморозке. Тимлид сопровождения параллельно звонит все 3 дня вместе с МОС.', fail: 'Неверно. 3 дня недозвона = неактивный → воронка заморозки → отдельный сотрудник. Из плана МОС клиент выпадает. Тимлид параллельно звонит все 3 дня.' },
   ];
 
   let currentQ = 0;
@@ -1522,12 +1778,12 @@
     const scoreEl = document.getElementById('resultScore');
     const msgEl = document.getElementById('resultMsg');
 
-    scoreEl.textContent = score + '/10';
+    scoreEl.textContent = score + '/13';
 
-    if (score >= 9) {
+    if (score >= 12) {
       scoreEl.className = 'result-score great';
       msgEl.textContent = 'Отличный результат! Вы отлично знаете процесс сопровождения. Можно работать с клиентами уверенно.';
-    } else if (score >= 7) {
+    } else if (score >= 9) {
       scoreEl.className = 'result-score ok';
       msgEl.textContent = 'Хороший результат, но есть пробелы. Перечитайте разделы, в которых ошиблись, и пройдите тест ещё раз.';
     } else {
