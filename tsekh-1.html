@@ -716,8 +716,7 @@
     <a href="#stage1">Поступил в ДОС</a>
     <a href="#stage2">Активный сбор</a>
     <a href="#stage3-6">ЗБФЛ → Суд</a>
-    <a href="#roles">Роли · Документы</a>
-    <a href="#sla">SLA · Эскалация</a>
+    <a href="#sla">Активный клиент</a>
     <a href="#test">Тест</a>
   </div>
 </nav>
@@ -1145,14 +1144,19 @@
       <div class="stage-body">
         <div class="role-row">
           <div class="role-label">Цель</div>
-          <div class="role-content">Подписать с клиентом ОПД (подготовлен заранее), собрать фактуру для документа «Пояснение» через 5 вопросов, зафиксировать плановую дату подачи дела в суд.</div>
+          <div class="role-content">Подписать с клиентом ОПД (подготовлен заранее помощником юриста), собрать фактуру для документа «Пояснение» через 5 вопросов, зафиксировать плановую дату подачи дела в суд.</div>
+        </div>
+        <div class="divider"></div>
+        <div class="role-row">
+          <div class="role-label">Кто готовит ОПД</div>
+          <div class="role-content"><strong>Помощник юриста по подготовке документов</strong> (не тот, что заказывает справки из Госуслуг). Задача «Подготовить ОПД» автоматически встаёт на него <strong>сразу после того, как МОС закрыл задачу «Разбор документов»</strong>. К Касанию №1 ОПД уже готов и лежит в карточке сделки.</div>
         </div>
         <div class="divider"></div>
         <div class="role-row">
           <div class="role-label">Что делает МОС</div>
           <div class="role-content">
             <ul class="plain">
-              <li><span><strong>Презентует клиенту ОПД</strong> (согласие на персональные данные) — документ подготовлен заранее юристом</span></li>
+              <li><span><strong>Презентует клиенту ОПД</strong> (согласие на персональные данные) — документ уже подготовлен помощником юриста</span></li>
               <li><span>Задаёт <strong>5 контрольных вопросов для пояснений</strong> — собирает фактуру для будущего документа «Пояснение» (юрист потом его готовит)</span></li>
               <li><span>Выявляет и фиксирует <strong>дату плановой подачи в суд</strong> в карточке сделки</span></li>
               <li><span>Заполняет системные поля: «Настроение клиента», «Результат касания», «Цель следующего касания»</span></li>
@@ -1219,110 +1223,7 @@
 
         <div class="divider"></div>
 
-        <h3>📋 Что внутри ЮЗ — структура шаблона</h3>
-        <p>МОС должен знать структуру ЮЗ, чтобы провести по ней клиента на касании №2. Шаблон состоит из шапки + 4 разделов + подписи.</p>
-
-        <div class="doc-card" style="margin-top:16px">
-          <div class="doc-card-header">
-            <div class="doc-icon">📄</div>
-            <div>
-              <div class="doc-name">Шапка ЮЗ</div>
-              <div class="doc-when">Реквизиты заключения</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li>ФИО клиента (Заказчика)</li>
-            <li>Дата составления ЮЗ</li>
-            <li>ФИО юриста, который составил</li>
-          </ul>
-        </div>
-
-        <div class="doc-card">
-          <div class="doc-card-header">
-            <div class="doc-icon">💰</div>
-            <div>
-              <div class="doc-name">Раздел 1 · Финансовая картина</div>
-              <div class="doc-when">Текущее положение клиента</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li><strong>Сумма долга</strong> (₽)</li>
-            <li><strong>Кредиторы:</strong> разбивка по типам (банки / МФО / прочее)</li>
-            <li><strong>Доход</strong> официальный (₽/мес)</li>
-            <li><strong>Имущество</strong> (перечень)</li>
-            <li><strong>Иждивенцы / семейное положение</strong></li>
-          </ul>
-        </div>
-
-        <div class="doc-card">
-          <div class="doc-card-header">
-            <div class="doc-icon">🎯</div>
-            <div>
-              <div class="doc-name">Раздел 2 · Заявленная процедура</div>
-              <div class="doc-when">Что хочет клиент</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li>Фиксируется, какую процедуру изначально просил клиент (с его слов)</li>
-            <li>Нужно для сопоставления с тем, что мы рекомендуем в разделе 3</li>
-          </ul>
-        </div>
-
-        <div class="doc-card">
-          <div class="doc-card-header">
-            <div class="doc-icon">⚖️</div>
-            <div>
-              <div class="doc-name">Раздел 3 · Применимая процедура</div>
-              <div class="doc-when">Что рекомендует юрист на основе фактов</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li><strong>Применимая процедура:</strong> РЕАЛИЗАЦИЯ ИМУЩЕСТВА (РИ) / РЕСТРУКТУРИЗАЦИЯ ДОЛГОВ (РДГ) / ВНЕСУДЕБНОЕ БАНКРОТСТВО</li>
-            <li><strong>Срок процедуры</strong></li>
-            <li><strong>Что списывается</strong> в результате процедуры</li>
-          </ul>
-          <div class="quote-box" style="margin-top:12px">
-            <div class="quote-label">Вводная фраза</div>
-            «С учётом финансовой картины (сумма долга, состав кредиторов, уровень дохода и имущественное положение) для Заказчика наиболее вероятна и целесообразна следующая процедура...»
-          </div>
-        </div>
-
-        <div class="doc-card">
-          <div class="doc-card-header">
-            <div class="doc-icon">📌</div>
-            <div>
-              <div class="doc-name">Раздел 4 · Действия для достижения результата</div>
-              <div class="doc-when">Кто что должен сделать</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li><strong>От клиента (через МОС):</strong> список конкретных действий, документов, шагов</li>
-            <li><strong>От юриста:</strong> список юридических действий компании</li>
-          </ul>
-          <div class="info-box" style="margin-top:12px">
-            <div>Этот раздел = чек-лист на 1.5–2 года вперёд. Те же задачи через API уходят в виджет «Чек-листы» в карточке сделки.</div>
-          </div>
-        </div>
-
-        <div class="doc-card">
-          <div class="doc-card-header">
-            <div class="doc-icon">🖊️</div>
-            <div>
-              <div class="doc-name">Подпись и информация</div>
-              <div class="doc-when">В конце ЮЗ</div>
-            </div>
-          </div>
-          <ul class="doc-items">
-            <li>Формулировка: «Юридическое заключение составлено специалистами компании "Донуля" на основании представленных Заказчиком документов и сведений из открытых источников»</li>
-            <li>Подпись директора + печать ИП (в шаблоне)</li>
-            <li>Клиент НЕ подписывает</li>
-          </ul>
-        </div>
-
-        <h3>Как МОС презентует ЮЗ клиенту на касании №2</h3>
-        <div class="info-box">
-          <div>Проходим по разделам по порядку: <strong>шапка → раздел 1 (что у клиента) → раздел 2 (что хотел) → раздел 3 (что рекомендуем и почему) → раздел 4 (что делаем дальше)</strong>. Это логичная история: от текущей ситуации к рекомендации к плану действий.</div>
-        </div>
+        <img src="jz-example.png" alt="Пример ЮЗ" style="max-width:100%;border-radius:8px;border:1px solid var(--border);margin-top:16px;display:block">
       </div>
     </div>
 
@@ -1339,7 +1240,7 @@
       <div class="stage-body">
         <div class="role-row">
           <div class="role-label">Что было подготовлено к этому касанию</div>
-          <div class="role-content">К Касанию №3 юрист подготовил <strong>текст пояснений</strong> на основе ответов клиента на 5 вопросов с Касания №1 (про причины взятия кредитов, обстоятельства жизни и т.д.).</div>
+          <div class="role-content">К Касанию №3 <strong>помощник юриста по подготовке документов</strong> подготовил <strong>текст пояснений</strong> на основе ответов клиента на 5 вопросов с Касания №1 (про причины взятия кредитов, обстоятельства жизни и т.д.).</div>
         </div>
         <div class="divider"></div>
         <div class="role-row">
@@ -1557,178 +1458,15 @@
   </div>
 </section>
 
-<!-- ЧАСТЬ 06 — РОЛИ И ДОКУМЕНТЫ -->
-<section class="section" id="roles">
-  <div class="container">
-    <div class="section-number">Часть 06</div>
-    <div class="section-title">Роли · Инструменты · <span>Артефакты</span></div>
 
-    <h3>Кто за что отвечает</h3>
-    <table class="funnel-table">
-      <thead>
-        <tr>
-          <th>Роль</th>
-          <th>Что делает</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>МОС</strong></td><td>Все касания с клиентом (1, 2, 3+, N). Ведение портфеля 130–150 клиентов</td></tr>
-        <tr><td><strong>Помощник юриста</strong></td><td>Заказ документов из Госуслуг, фоновая работа со справками</td></tr>
-        <tr><td><strong>Юрист</strong></td><td>Разбор документов, форма «Задачи в процедуре», ЮЗ, ОПД, Пояснения</td></tr>
-        <tr><td><strong>Ответственный юрист</strong></td><td>Принятие на ЗБФЛ, составление ЗБФЛ</td></tr>
-        <tr><td><strong>Руководитель юр. отдела</strong></td><td>Финальная проверка качества ЗБФЛ, эскалация юр. сложных кейсов</td></tr>
-        <tr><td><strong>Тимлид МОС</strong></td><td>Эскалация: НДЗ ×3, негативное настроение, отказ от Согласия, документов ×2 нет</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Инструменты</h3>
-    <table class="funnel-table">
-      <thead>
-        <tr>
-          <th>Инструмент</th>
-          <th>Назначение</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>AmoCRM</strong></td><td>Воронка сделок, кастомные поля, виджет чек-листов</td></tr>
-        <tr><td><strong>Sensei</strong> (виджет AmoCRM)</td><td>Скрипты задач, кнопки действий, расширенные формы</td></tr>
-        <tr><td><strong>OkiDoki</strong></td><td>СМС-подпись Согласия на процедуру (день 2)</td></tr>
-        <tr><td><strong>MaxBot</strong></td><td>Автосообщения клиенту + отправка PDF ЮЗ</td></tr>
-        <tr><td><strong>Госуслуги</strong></td><td>Заказ документов клиента помощником юриста</td></tr>
-        <tr><td><strong>Мой Арбитр</strong></td><td>Подача ЗБФЛ в суд</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Артефакты — кто подписывает что</h3>
-
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon">📜</div>
-        <div>
-          <div class="doc-name">Согласие на процедуру (= ПЮЗ = Декларация)</div>
-          <div class="doc-when">День 2 · Двусторонний</div>
-        </div>
-      </div>
-      <ul class="doc-items">
-        <li>Компания: подпись + печать ИП уже в шаблоне</li>
-        <li>Клиент: подписывает через OkiDoki СМС-код</li>
-        <li>Юридическая фиксация ознакомления клиента с условиями процедуры</li>
-        <li>Подписанное Согласие = зачётная продажа</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon">🔒</div>
-        <div>
-          <div class="doc-name">ОПД — согласие на обработку персональных данных</div>
-          <div class="doc-when">Касание №1 · Подпись клиента</div>
-        </div>
-      </div>
-      <ul class="doc-items">
-        <li>Готовится заранее юристом</li>
-        <li>МОС презентует на касании №1 и собирает подпись клиента</li>
-        <li>Часть пакета документов для будущего судебного дела</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon">⚖️</div>
-        <div>
-          <div class="doc-name">ЮЗ — юридическое заключение</div>
-          <div class="doc-when">Касание №2 (~день 14) · Только компания</div>
-        </div>
-      </div>
-      <ul class="doc-items">
-        <li>Готовит юрист на основе документов клиента</li>
-        <li>Подпись директора + печать ИП в шаблоне</li>
-        <li><strong>Клиент НЕ подписывает</strong> (изменение от 12.05.2026)</li>
-        <li>MaxBot шлёт PDF клиенту автоматически после касания №2</li>
-        <li><strong>Структура шаблона:</strong> шапка (ФИО, дата, юрист) → 4 раздела (Финансовая картина · Заявленная процедура · Применимая процедура · Действия для результата) → подпись. Детально — в Части 04, блок «Касание №2».</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon">📝</div>
-        <div>
-          <div class="doc-name">Пояснение</div>
-          <div class="doc-when">Касание №3 · Клиент переписывает от руки</div>
-        </div>
-      </div>
-      <ul class="doc-items">
-        <li>На Касании №1 МОС собирает у клиента фактуру через 5 контрольных вопросов</li>
-        <li>Юрист готовит текст пояснения на основе ответов клиента</li>
-        <li>На Касании №3 МОС передаёт клиенту текст → клиент <strong>переписывает от руки</strong> и присылает фото в чат</li>
-        <li>Почему от руки: суды лояльнее к рукописным пояснениям клиента</li>
-        <li>Часть пакета документов для суда</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <div class="doc-card-header">
-        <div class="doc-icon">📂</div>
-        <div>
-          <div class="doc-name">ЗБФЛ — заявление о банкротстве физлица</div>
-          <div class="doc-when">Этап «Подготовка ЗБФЛ» · Клиент через «Мой Арбитр»</div>
-        </div>
-      </div>
-      <ul class="doc-items">
-        <li>Финальный документ Цеха 1 — собирается отв. юристом</li>
-        <li>Проверяется руководителем юр. отдела</li>
-        <li>Подаётся помощником юриста через «Мой Арбитр»</li>
-        <li>Появление на КАД = выход дела из Цеха 1 в Цех 2</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ЧАСТЬ 07 — SLA, ЭСКАЛАЦИЯ, АКТИВНЫЙ/НЕАКТИВНЫЙ -->
+<!-- ЧАСТЬ 06 — АКТИВНЫЙ/НЕАКТИВНЫЙ -->
 <section class="section" id="sla">
   <div class="container">
-    <div class="section-number">Часть 07</div>
-    <div class="section-title">SLA, эскалация и <span>активный клиент</span></div>
-
-    <h3>Целевые сроки (SLA)</h3>
-    <table class="funnel-table">
-      <thead>
-        <tr><th>Действие</th><th>Срок</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Принять клиента</td><td><strong>2 часа</strong></td></tr>
-        <tr><td>Подписание Согласия</td><td><strong>до 18:00 дня 2</strong></td></tr>
-        <tr><td>Заказать документы через Госуслуги</td><td><strong>4 часа</strong> после Согласия</td></tr>
-        <tr><td>Касания (1, 2, 3+, N)</td><td><strong>до 18:00</strong> целевого дня</td></tr>
-        <tr><td>Составить ЗБФЛ</td><td><strong>4 часа</strong></td></tr>
-        <tr><td>Проверка качества</td><td><strong>3 часа</strong></td></tr>
-        <tr><td>Уведомить кредиторов</td><td><strong>4 часа</strong></td></tr>
-        <tr><td>Подать в суд</td><td><strong>2 часа</strong></td></tr>
-      </tbody>
-    </table>
-
-    <div class="info-box" style="margin-top:16px">
-      <div><strong>Целевая ёмкость МОС:</strong> 130–150 клиентов в портфеле (~100 платящих + ~35 выплативших, но ещё в процедуре).</div>
-    </div>
-
-    <h3>Точки эскалации</h3>
-    <table class="funnel-table">
-      <thead>
-        <tr><th>Триггер</th><th>Куда</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Клиент отказывается подписывать Согласие</td><td><strong>Тимлид МОС</strong></td></tr>
-        <tr><td>НДЗ 3 раза подряд</td><td>Автомат → тимлид → воронка заморозки</td></tr>
-        <tr><td>Клиент сказал «хочу расторгнуть»</td><td>Тимлид + ОКК</td></tr>
-        <tr><td>«Настроение клиента = негативное»</td><td>Тимлид (вернуться к клиенту вне зачётной недели)</td></tr>
-        <tr><td>«Документов ещё нет» ×2 подряд</td><td>Тимлид (клиент тормозит сбор)</td></tr>
-        <tr><td>Юридически сложный кейс</td><td>Руководитель юр. отдела</td></tr>
-        <tr><td>Не платит после плана реструктуризации</td><td>Тимлид → директор производства</td></tr>
-      </tbody>
-    </table>
+    <div class="section-number">Часть 06</div>
+    <div class="section-title">Активный и <span>неактивный клиент</span></div>
 
     <!-- АКТИВНЫЙ/НЕАКТИВНЫЙ -->
-    <div class="stage-card open" onclick="toggleCard(this)" style="margin-top:32px">
+    <div class="stage-card open" onclick="toggleCard(this)">
       <div class="stage-header">
         <div class="stage-num">🔄</div>
         <div class="stage-info">
@@ -1778,7 +1516,7 @@
 <!-- ТЕСТ -->
 <section class="section" id="test">
   <div class="container">
-    <div class="section-number">Часть 08 · Тест</div>
+    <div class="section-number">Часть 07 · Тест</div>
     <div class="section-title">Проверь <span>себя</span></div>
     <p>16 вопросов по материалу. Ответьте на каждый — в конце увидите результат.</p>
 
